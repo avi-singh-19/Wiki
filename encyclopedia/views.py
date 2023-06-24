@@ -30,3 +30,18 @@ def entry(request, title):
             'content': markdown_conversion(title),
             'title': title
         })
+
+
+def search(request):
+    if request.method == "POST":
+        entry_lookup = request.POST['q']
+        content = markdown_conversion(entry_lookup)
+        if content is not None:
+            return render(request, 'encyclopedia/entry.html', {
+                'content': content,
+                'title': entry_lookup
+            })
+        else:
+            return render(request, 'encyclopedia/no_entry.html', {
+                'error_message': 'There is no entry saved under this title, sorry'
+            })
