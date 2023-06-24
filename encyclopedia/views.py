@@ -23,9 +23,10 @@ def markdown_conversion(md_file):
 def entry(request, title):
     if markdown_conversion(title) is None:
         return render(request, 'encyclopedia/no_entry.html', {
-            'error_message': 'There is no entry under this title'
+            'error_message': 'There is no entry saved under this title, sorry'
         })
     else:
         return render(request, 'encyclopedia/entry.html', {
-            'content': markdown_conversion(title)
+            'content': markdown_conversion(title),
+            'title': title
         })
