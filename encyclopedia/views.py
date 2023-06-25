@@ -68,3 +68,9 @@ def create(request):
             return render(request, 'encyclopedia/entry_exists.html', {
                 'error_message': 'An entry with this title already exists, please create an entry with a new title'
             })
+        else:
+            util.save_entry(title, content)
+            return render(request, 'encyclopedia/entry.html', {
+                'content': markdown_conversion(title),
+                'title': title
+            })
