@@ -56,6 +56,7 @@ def search(request):
 
 
 def create(request):
-    return render(request, 'encyclopedia/create.html', {
-        'message': 'Create a new entry on this page about any new topic you want'
-    })
+    if request.method == 'GET':
+        return render(request, 'encyclopedia/create.html', {
+            'message': 'Create a new entry on this page about any new topic you want'
+        })

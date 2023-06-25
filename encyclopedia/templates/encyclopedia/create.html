@@ -7,5 +7,17 @@
 {% block body %}
     <h1>Create New Entry</h1>
     {{ message }}
+    <br><br>
+
+    <form action="{% url 'create' %}" method="POST">
+      <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+
+      <label for="entry_text">Text:</label><br>
+        <textarea id="text" name="text" style="height:300px;width:650px"> </textarea>
+        <br><br>
+
+      <input type="submit" value="Submit">
+    </form>
 
 {% endblock %}
