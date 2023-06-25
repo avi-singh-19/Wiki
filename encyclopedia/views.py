@@ -65,6 +65,6 @@ def create(request):
         content = request.POST['text']
 
         if util.get_entry(title):
-            return render(request, 'encyclopedia/create.html', {
-                'message': 'An entry with this title already exists, please create an entry with a new title'
+            return render(request, 'encyclopedia/entry_exists.html', {
+                'error_message': 'An entry with this title already exists, please create an entry with a new title'
             })

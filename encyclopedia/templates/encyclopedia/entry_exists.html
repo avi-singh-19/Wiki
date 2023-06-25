@@ -7,4 +7,7 @@
 {% block body %}
     <h1>Entry already exists</h1>
     {{ error_message }}
+    <br><br>
+
+    <a href="{% url 'create' %}"> Create new page </a>
 {% endblock %}
