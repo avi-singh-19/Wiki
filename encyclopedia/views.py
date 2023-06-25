@@ -74,3 +74,25 @@ def create(request):
                 'content': markdown_conversion(title),
                 'title': title
             })
+
+
+def edit(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = util.get_entry(title)
+        return render(request, 'encyclopedia/edit.html', {
+            'error_message': 'Edit the entry below',
+            'title': title,
+            'content': content
+        })
+
+
+def save_changes(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        content = request.POST['text']
+        util.save_entry(title, content)
+        return render(request, 'encyclopedia/entry.html', {
+            'content': markdown_conversion(title),
+            'title': title
+        })
