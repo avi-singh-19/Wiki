@@ -42,6 +42,13 @@ def search(request):
                 'title': entry_lookup
             })
         else:
-            return render(request, 'encyclopedia/no_entry.html', {
-                'error_message': 'There is no entry saved under this title, sorry'
+            entries = util.list_entries()
+            results = []
+            for entry in entries:
+                if entry_lookup.lower() in entry.lower():
+                    results.append(entry)
+
+            return render(request, 'encyclopedia/search_results.html', {
+                'results': results,
+                'error_message': 'There are no entries matching your search, sorry'
             })
