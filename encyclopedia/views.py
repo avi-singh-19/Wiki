@@ -53,3 +53,9 @@ def search(request):
                 'error_message': 'There are no entries matching your search, sorry',
                 'search_query': entry_lookup
             })
+
+
+def create(request):
+    return render(request, 'encyclopedia/create.html', {
+        'message': 'Create a new entry on this page about any new topic you want'
+    })
