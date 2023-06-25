@@ -50,5 +50,6 @@ def search(request):
 
             return render(request, 'encyclopedia/search_results.html', {
                 'results': results,
-                'error_message': 'There are no entries matching your search, sorry'
+                'error_message': 'There are no entries matching your search, sorry',
+                'search_query': entry_lookup
             })

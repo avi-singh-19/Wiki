@@ -5,20 +5,23 @@
 {% endblock %}
 
 {% block body %}
-
-    {% if results %}
-        <h1>Search results</h1>
-        {% for result in results %}
-            <ul>
-                <li>
-                    <a href="{% url 'title' title=result %}"> {{ result }} </a>
-                </li>
-            </ul>
-        {% endfor %}
+    {% if search_query %}
+        {% if results %}
+            <h1>Search results</h1>
+            {% for result in results %}
+                <ul>
+                    <li>
+                        <a href="{% url 'title' title=result %}"> {{ result }} </a>
+                    </li>
+                </ul>
+            {% endfor %}
+        {% else %}
+            <h1>No entries found</h1>
+            {{ error_message }}
+        {% endif %}
     {% else %}
         <h1>No entries found</h1>
         {{ error_message }}
     {% endif %}
-
 
 {% endblock %}
