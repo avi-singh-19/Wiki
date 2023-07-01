@@ -8,5 +8,6 @@ urlpatterns = [
     path('search', views.search, name='search'),
     path('create', views.create, name='create'),
     path('edit', views.edit, name='edit'),
-    path('save_changes', views.save_changes, name='save_changes')
+    path('save_changes', views.save_changes, name='save_changes'),
+    path('random', views.random, name='random_page')
 ]
